@@ -1,6 +1,8 @@
 ;;; Character sets
 
-(defcustom sanityinc/force-default-font-for-symbols nil
+(set-frame-font "Roboto" nil t)
+
+(defcustom sanityinc/force-default-font-for-symbols "Roboto"
   "When non-nil, force Emacs to use your default font for symbols."
   :type 'boolean)
 

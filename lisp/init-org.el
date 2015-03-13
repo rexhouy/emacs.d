@@ -76,28 +76,6 @@
 (after-load 'org-agenda
   (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro))
 
-
-;; ;; Show iCal calendars in the org agenda
-;; (when (and *is-a-mac* (require 'org-mac-iCal nil t))
-;;   (setq org-agenda-include-diary t
-;;         org-agenda-custom-commands
-;;         '(("I" "Import diary from iCal" agenda ""
-;;            ((org-agenda-mode-hook #'org-mac-iCal)))))
-
-;;   (add-hook 'org-agenda-cleanup-fancy-diary-hook
-;;             (lambda ()
-;;               (goto-char (point-min))
-;;               (save-excursion
-;;                 (while (re-search-forward "^[a-z]" nil t)
-;;                   (goto-char (match-beginning 0))
-;;                   (insert "0:00-24:00 ")))
-;;               (while (re-search-forward "^ [a-z]" nil t)
-;;                 (goto-char (match-beginning 0))
-;;                 (save-excursion
-;;                   (re-search-backward "^[0-9]+:[0-9]+-[0-9]+:[0-9]+ " nil t))
-;;                 (insert (match-string 0))))))
-
-
 (after-load 'org
   (define-key org-mode-map (kbd "C-M-<up>") 'org-up-element)
   (when *is-a-mac*
@@ -127,16 +105,28 @@
      (sqlite . t))))
 
 
-(provide 'init-org)
-
 ;; export html custom style sheet
 (setq org-export-html-style-include-scripts nil
       org-export-html-style-include-default nil)
 (setq org-export-html-style
-      "<link rel=\"stylesheet\" type=\"text/css\" href=\"org-style.css\" media=\"only screen and (min-device-width: 480px)\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"org-style-phone.css\" media=\"only screen and (max-device-width: 480px)\" />")
+      "<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<link rel='stylesheet' type='text/css' href='emacs-org-html-style/org-style.css' media='only screen' />
+<link rel='stylesheet' type='text/css' href='emacs-org-html-style/org-style-min-640px.css' media='only screen and (min-width: 640px) and (max-width: 960px)' />
+<link rel='stylesheet' type='text/css' href='emacs-org-html-style/org-style-max-640px.css' media='only screen and (max-width: 640px)' />
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<script src='https://code.jquery.com/jquery-2.1.3.min.js'></script>
+<script src='emacs-org-html-style/nav.js'></script>")
 
-;; under score
-(setq org-export-with-sub-superscripts nil)
+;; no under score
+(setq-default org-use-sub-superscripts nil)
 
-;; out put directory
+;; no section numbers
+(setq-default org-export-with-section-numbers nil)
+
+;; output directory
 (setq org-export-publishing-directory "~/workspace/rexhouy.github.io/")
+
+;; code highlight
+(setq org-src-fontify-natively t)
+
+(provide 'init-org)

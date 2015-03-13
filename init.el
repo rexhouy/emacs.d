@@ -90,6 +90,8 @@
 ;; Customer configure file
 ;;----------------------------------------------------------------------------
 (require 'init-custom)
+(require 'init-go)
+(require 'init-smart-tab)
 
 
 (require 'init-paredit)
