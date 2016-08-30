@@ -1,0 +1,3 @@
+;; -*- coding: utf-8 -*-
+测试 :count 3
+老侯 :count 2

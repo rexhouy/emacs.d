@@ -1,4 +1,3 @@
-
 ;;; This file bootstraps the configuration, which is divided into
 ;;; a number of other files.
 
@@ -74,6 +73,7 @@
 (require 'init-csv)
 (require 'init-erlang)
 (require 'init-javascript)
+(require 'init-coffee)
 (require 'init-php)
 (require 'init-org)
 (require 'init-nxml)
@@ -92,7 +92,6 @@
 (require 'init-custom)
 (require 'init-go)
 (require 'init-smart-tab)
-
 
 (require 'init-paredit)
 (require 'init-lisp)
@@ -153,7 +152,7 @@
             (message "init completed in %.2fms"
                      (sanityinc/time-subtract-millis after-init-time before-init-time))))
 
-
+(require 'init-pinyin)
 (provide 'init)
 
 
