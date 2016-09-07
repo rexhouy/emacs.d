@@ -163,8 +163,8 @@
 (defun sanityinc/emacs-lisp-setup ()
   "Enable features useful when working with elisp."
   (elisp-slime-nav-mode t)
-  (set-up-hippie-expand-for-elisp)
-  (ac-emacs-lisp-mode-setup))
+  (set-up-hippie-expand-for-elisp))
+  ;; (ac-emacs-lisp-mode-setup))
 
 (defconst sanityinc/elispy-modes
   '(emacs-lisp-mode ielm-mode)
@@ -244,21 +244,21 @@
 
 
 
-(when (maybe-require-package 'rainbow-mode)
-  (defun sanityinc/enable-rainbow-mode-if-theme ()
-    (when (string-match "\\(color-theme-\\|-theme\\.el\\)" (buffer-name))
-      (rainbow-mode 1)))
+;; (when (maybe-require-package 'rainbow-mode)
+;;   (defun sanityinc/enable-rainbow-mode-if-theme ()
+;;     (when (string-match "\\(color-theme-\\|-theme\\.el\\)" (buffer-name))
+;;       (rainbow-mode 1)))
 
-  (add-hook 'emacs-lisp-mode-hook 'sanityinc/enable-rainbow-mode-if-theme))
+;;   (add-hook 'emacs-lisp-mode-hook 'sanityinc/enable-rainbow-mode-if-theme))
 
 (when (maybe-require-package 'highlight-quoted)
   (add-hook 'emacs-lisp-mode-hook 'highlight-quoted-mode))
 
 
-(when (maybe-require-package 'flycheck)
-  (require-package 'flycheck-package)
-  (after-load 'flycheck
-    (flycheck-package-setup)))
+;; (when (maybe-require-package 'flycheck)
+;;   (require-package 'flycheck-package)
+;;   (after-load 'flycheck
+;;     (flycheck-package-setup)))
 
 
 

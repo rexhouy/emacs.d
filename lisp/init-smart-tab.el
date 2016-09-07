@@ -1,5 +1,6 @@
-;;; This is configuration for go-mode
+;;; This is configuration for smart-tabs-mode
 (require-package 'smart-tabs-mode)
+(require-package 'smart-tab)
 
 (require 'smart-tab)
 (require 'smart-tabs-mode)

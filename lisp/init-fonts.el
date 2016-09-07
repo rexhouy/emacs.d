@@ -1,8 +1,10 @@
 ;;; Character sets
 
-(set-frame-font "Roboto" nil t)
+(set-frame-font "DROID SANS MONO" nil t)
+;; (set-frame-font "MONACO" nil t)
 
-(defcustom sanityinc/force-default-font-for-symbols "Roboto"
+
+(defcustom sanityinc/force-default-font-for-symbols "DROID SANS MONO"
   "When non-nil, force Emacs to use your default font for symbols."
   :type 'boolean)
 

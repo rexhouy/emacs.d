@@ -18,14 +18,14 @@
 
 ;; We include the org repository for completeness, but don't normally
 ;; use it.
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 
 (when (< emacs-major-version 24)
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+  (add-to-list 'package-archives '("gnu" . "http://elpa.zilongshanren.com/gnu/")))
 
 ;;; Also use Melpa for most packages
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://elpa.zilongshanren.com/melpa/"))
+(add-to-list 'package-archives '("melpa-stable" . "http://elpa.zilongshanren.com/melpa-stable/"))
 
 
 
@@ -48,10 +48,20 @@
 If NO-REFRESH is non-nil, the available package lists will not be
 re-downloaded in order to locate PACKAGE."
   (if (package-installed-p package min-version)
+      ;; (progn (print "test======================")
+      ;;        (print package)
+      ;; (write-region "test==============" nil "/home/rexhouy/.emacs.d/log" t)
+      ;; (write-region package nil "/home/rexhouy/.emacs.d/log" t)
       t
     (if (or (assoc package package-archive-contents) no-refresh)
+        ;; (progn (print "not installed ++++++++++++++++++++++++++++++")
+        ;;        (print package)
+        ;; (write-region "not installed==============" nil "/home/rexhouy/.emacs.d/log" t)
+        ;; (write-region package nil "/home/rexhouy/.emacs.d/log" t)
         (package-install package)
       (progn
+        ;; (print "install package ----------------------------------")
+        ;; (print pakcage)
         (package-refresh-contents)
         (require-package package min-version t)))))
 
